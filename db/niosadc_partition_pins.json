@@ -1,0 +1,345 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "eth_tse_0_mac_gmii_connection_gmii_tx_d[0]",
+					"strict" : false
+				},
+				{
+					"name" : "eth_tse_0_mac_gmii_connection_gmii_tx_d[1]",
+					"strict" : false
+				},
+				{
+					"name" : "eth_tse_0_mac_gmii_connection_gmii_tx_d[2]",
+					"strict" : false
+				},
+				{
+					"name" : "eth_tse_0_mac_gmii_connection_gmii_tx_d[3]",
+					"strict" : false
+				},
+				{
+					"name" : "eth_tse_0_mac_gmii_connection_gmii_tx_d[4]",
+					"strict" : false
+				},
+				{
+					"name" : "eth_tse_0_mac_gmii_connection_gmii_tx_d[5]",
+					"strict" : false
+				},
+				{
+					"name" : "eth_tse_0_mac_gmii_connection_gmii_tx_d[6]",
+					"strict" : false
+				},
+				{
+					"name" : "eth_tse_0_mac_gmii_connection_gmii_tx_d[7]",
+					"strict" : false
+				},
+				{
+					"name" : "eth_tse_0_mac_gmii_connection_gmii_tx_en",
+					"strict" : false
+				},
+				{
+					"name" : "eth_tse_0_mac_gmii_connection_gmii_tx_err",
+					"strict" : false
+				},
+				{
+					"name" : "eth_tse_0_mac_mii_connection_mii_tx_d[0]",
+					"strict" : false
+				},
+				{
+					"name" : "eth_tse_0_mac_mii_connection_mii_tx_d[1]",
+					"strict" : false
+				},
+				{
+					"name" : "eth_tse_0_mac_mii_connection_mii_tx_d[2]",
+					"strict" : false
+				},
+				{
+					"name" : "eth_tse_0_mac_mii_connection_mii_tx_d[3]",
+					"strict" : false
+				},
+				{
+					"name" : "eth_tse_0_mac_mii_connection_mii_tx_en",
+					"strict" : false
+				},
+				{
+					"name" : "eth_tse_0_mac_mii_connection_mii_tx_err",
+					"strict" : false
+				},
+				{
+					"name" : "eth_tse_0_mac_misc_connection_magic_wakeup",
+					"strict" : false
+				},
+				{
+					"name" : "eth_tse_0_mac_misc_connection_ff_tx_septy",
+					"strict" : false
+				},
+				{
+					"name" : "eth_tse_0_mac_misc_connection_tx_ff_uflow",
+					"strict" : false
+				},
+				{
+					"name" : "eth_tse_0_mac_misc_connection_ff_tx_a_full",
+					"strict" : false
+				},
+				{
+					"name" : "eth_tse_0_mac_misc_connection_ff_tx_a_empty",
+					"strict" : false
+				},
+				{
+					"name" : "eth_tse_0_mac_misc_connection_rx_err_stat[0]",
+					"strict" : false
+				},
+				{
+					"name" : "eth_tse_0_mac_misc_connection_rx_err_stat[1]",
+					"strict" : false
+				},
+				{
+					"name" : "eth_tse_0_mac_misc_connection_rx_err_stat[2]",
+					"strict" : false
+				},
+				{
+					"name" : "eth_tse_0_mac_misc_connection_rx_err_stat[3]",
+					"strict" : false
+				},
+				{
+					"name" : "eth_tse_0_mac_misc_connection_rx_err_stat[4]",
+					"strict" : false
+				},
+				{
+					"name" : "eth_tse_0_mac_misc_connection_rx_err_stat[5]",
+					"strict" : false
+				},
+				{
+					"name" : "eth_tse_0_mac_misc_connection_rx_err_stat[6]",
+					"strict" : false
+				},
+				{
+					"name" : "eth_tse_0_mac_misc_connection_rx_err_stat[7]",
+					"strict" : false
+				},
+				{
+					"name" : "eth_tse_0_mac_misc_connection_rx_err_stat[8]",
+					"strict" : false
+				},
+				{
+					"name" : "eth_tse_0_mac_misc_connection_rx_err_stat[9]",
+					"strict" : false
+				},
+				{
+					"name" : "eth_tse_0_mac_misc_connection_rx_err_stat[10]",
+					"strict" : false
+				},
+				{
+					"name" : "eth_tse_0_mac_misc_connection_rx_err_stat[11]",
+					"strict" : false
+				},
+				{
+					"name" : "eth_tse_0_mac_misc_connection_rx_err_stat[12]",
+					"strict" : false
+				},
+				{
+					"name" : "eth_tse_0_mac_misc_connection_rx_err_stat[13]",
+					"strict" : false
+				},
+				{
+					"name" : "eth_tse_0_mac_misc_connection_rx_err_stat[14]",
+					"strict" : false
+				},
+				{
+					"name" : "eth_tse_0_mac_misc_connection_rx_err_stat[15]",
+					"strict" : false
+				},
+				{
+					"name" : "eth_tse_0_mac_misc_connection_rx_err_stat[16]",
+					"strict" : false
+				},
+				{
+					"name" : "eth_tse_0_mac_misc_connection_rx_err_stat[17]",
+					"strict" : false
+				},
+				{
+					"name" : "eth_tse_0_mac_misc_connection_rx_frm_type[0]",
+					"strict" : false
+				},
+				{
+					"name" : "eth_tse_0_mac_misc_connection_rx_frm_type[1]",
+					"strict" : false
+				},
+				{
+					"name" : "eth_tse_0_mac_misc_connection_rx_frm_type[2]",
+					"strict" : false
+				},
+				{
+					"name" : "eth_tse_0_mac_misc_connection_rx_frm_type[3]",
+					"strict" : false
+				},
+				{
+					"name" : "eth_tse_0_mac_misc_connection_ff_rx_dsav",
+					"strict" : false
+				},
+				{
+					"name" : "eth_tse_0_mac_misc_connection_ff_rx_a_full",
+					"strict" : false
+				},
+				{
+					"name" : "eth_tse_0_mac_misc_connection_ff_rx_a_empty",
+					"strict" : false
+				},
+				{
+					"name" : "eth_tse_0_mac_status_connection_eth_mode",
+					"strict" : false
+				},
+				{
+					"name" : "eth_tse_0_mac_status_connection_ena_10",
+					"strict" : false
+				},
+				{
+					"name" : "spi_0_external_MOSI",
+					"strict" : false
+				},
+				{
+					"name" : "spi_0_external_SCLK",
+					"strict" : false
+				},
+				{
+					"name" : "spi_0_external_SS_n",
+					"strict" : false
+				},
+				{
+					"name" : "clk_clk",
+					"strict" : false
+				},
+				{
+					"name" : "eth_tse_0_mac_status_connection_set_1000",
+					"strict" : false
+				},
+				{
+					"name" : "eth_tse_0_mac_status_connection_set_10",
+					"strict" : false
+				},
+				{
+					"name" : "pio_0_external_connection_export[2]",
+					"strict" : false
+				},
+				{
+					"name" : "eth_tse_0_mac_misc_connection_ff_tx_crc_fwd",
+					"strict" : false
+				},
+				{
+					"name" : "eth_tse_0_mac_mii_connection_mii_col",
+					"strict" : false
+				},
+				{
+					"name" : "pio_0_external_connection_export[3]",
+					"strict" : false
+				},
+				{
+					"name" : "pio_0_external_connection_export[1]",
+					"strict" : false
+				},
+				{
+					"name" : "pio_0_external_connection_export[7]",
+					"strict" : false
+				},
+				{
+					"name" : "pio_0_external_connection_export[0]",
+					"strict" : false
+				},
+				{
+					"name" : "pio_0_external_connection_export[4]",
+					"strict" : false
+				},
+				{
+					"name" : "eth_tse_0_mac_mii_connection_mii_crs",
+					"strict" : false
+				},
+				{
+					"name" : "eth_tse_0_mac_gmii_connection_gmii_rx_dv",
+					"strict" : false
+				},
+				{
+					"name" : "pio_0_external_connection_export[5]",
+					"strict" : false
+				},
+				{
+					"name" : "pio_0_external_connection_export[6]",
+					"strict" : false
+				},
+				{
+					"name" : "reset_controller_0_reset_in0_reset",
+					"strict" : false
+				},
+				{
+					"name" : "eth_tse_0_mac_mii_connection_mii_rx_dv",
+					"strict" : false
+				},
+				{
+					"name" : "eth_tse_0_mac_mii_connection_mii_rx_d[3]",
+					"strict" : false
+				},
+				{
+					"name" : "eth_tse_0_mac_mii_connection_mii_rx_d[2]",
+					"strict" : false
+				},
+				{
+					"name" : "eth_tse_0_mac_mii_connection_mii_rx_d[1]",
+					"strict" : false
+				},
+				{
+					"name" : "eth_tse_0_mac_mii_connection_mii_rx_d[0]",
+					"strict" : false
+				},
+				{
+					"name" : "spi_0_external_MISO",
+					"strict" : false
+				},
+				{
+					"name" : "eth_tse_0_mac_misc_connection_magic_sleep_n",
+					"strict" : false
+				},
+				{
+					"name" : "eth_tse_0_mac_gmii_connection_gmii_rx_d[3]",
+					"strict" : false
+				},
+				{
+					"name" : "eth_tse_0_mac_gmii_connection_gmii_rx_d[2]",
+					"strict" : false
+				},
+				{
+					"name" : "eth_tse_0_mac_gmii_connection_gmii_rx_d[1]",
+					"strict" : false
+				},
+				{
+					"name" : "eth_tse_0_mac_gmii_connection_gmii_rx_d[0]",
+					"strict" : false
+				},
+				{
+					"name" : "eth_tse_0_mac_gmii_connection_gmii_rx_d[7]",
+					"strict" : false
+				},
+				{
+					"name" : "eth_tse_0_mac_gmii_connection_gmii_rx_d[6]",
+					"strict" : false
+				},
+				{
+					"name" : "eth_tse_0_mac_gmii_connection_gmii_rx_d[5]",
+					"strict" : false
+				},
+				{
+					"name" : "eth_tse_0_mac_gmii_connection_gmii_rx_d[4]",
+					"strict" : false
+				},
+				{
+					"name" : "eth_tse_0_mac_gmii_connection_gmii_rx_err",
+					"strict" : false
+				},
+				{
+					"name" : "eth_tse_0_mac_mii_connection_mii_rx_err",
+					"strict" : false
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,42 @@
+	component ativiade5 is
+		port (
+			clk_clk                                     : in  std_logic                     := 'X';             -- clk
+			eth_tse_0_mac_gmii_connection_gmii_rx_d     : in  std_logic_vector(7 downto 0)  := (others => 'X'); -- gmii_rx_d
+			eth_tse_0_mac_gmii_connection_gmii_rx_dv    : in  std_logic                     := 'X';             -- gmii_rx_dv
+			eth_tse_0_mac_gmii_connection_gmii_rx_err   : in  std_logic                     := 'X';             -- gmii_rx_err
+			eth_tse_0_mac_gmii_connection_gmii_tx_d     : out std_logic_vector(7 downto 0);                     -- gmii_tx_d
+			eth_tse_0_mac_gmii_connection_gmii_tx_en    : out std_logic;                                        -- gmii_tx_en
+			eth_tse_0_mac_gmii_connection_gmii_tx_err   : out std_logic;                                        -- gmii_tx_err
+			eth_tse_0_mac_mii_connection_mii_rx_d       : in  std_logic_vector(3 downto 0)  := (others => 'X'); -- mii_rx_d
+			eth_tse_0_mac_mii_connection_mii_rx_dv      : in  std_logic                     := 'X';             -- mii_rx_dv
+			eth_tse_0_mac_mii_connection_mii_rx_err     : in  std_logic                     := 'X';             -- mii_rx_err
+			eth_tse_0_mac_mii_connection_mii_tx_d       : out std_logic_vector(3 downto 0);                     -- mii_tx_d
+			eth_tse_0_mac_mii_connection_mii_tx_en      : out std_logic;                                        -- mii_tx_en
+			eth_tse_0_mac_mii_connection_mii_tx_err     : out std_logic;                                        -- mii_tx_err
+			eth_tse_0_mac_mii_connection_mii_crs        : in  std_logic                     := 'X';             -- mii_crs
+			eth_tse_0_mac_mii_connection_mii_col        : in  std_logic                     := 'X';             -- mii_col
+			eth_tse_0_mac_misc_connection_magic_wakeup  : out std_logic;                                        -- magic_wakeup
+			eth_tse_0_mac_misc_connection_magic_sleep_n : in  std_logic                     := 'X';             -- magic_sleep_n
+			eth_tse_0_mac_misc_connection_ff_tx_crc_fwd : in  std_logic                     := 'X';             -- ff_tx_crc_fwd
+			eth_tse_0_mac_misc_connection_ff_tx_septy   : out std_logic;                                        -- ff_tx_septy
+			eth_tse_0_mac_misc_connection_tx_ff_uflow   : out std_logic;                                        -- tx_ff_uflow
+			eth_tse_0_mac_misc_connection_ff_tx_a_full  : out std_logic;                                        -- ff_tx_a_full
+			eth_tse_0_mac_misc_connection_ff_tx_a_empty : out std_logic;                                        -- ff_tx_a_empty
+			eth_tse_0_mac_misc_connection_rx_err_stat   : out std_logic_vector(17 downto 0);                    -- rx_err_stat
+			eth_tse_0_mac_misc_connection_rx_frm_type   : out std_logic_vector(3 downto 0);                     -- rx_frm_type
+			eth_tse_0_mac_misc_connection_ff_rx_dsav    : out std_logic;                                        -- ff_rx_dsav
+			eth_tse_0_mac_misc_connection_ff_rx_a_full  : out std_logic;                                        -- ff_rx_a_full
+			eth_tse_0_mac_misc_connection_ff_rx_a_empty : out std_logic;                                        -- ff_rx_a_empty
+			eth_tse_0_mac_status_connection_set_10      : in  std_logic                     := 'X';             -- set_10
+			eth_tse_0_mac_status_connection_set_1000    : in  std_logic                     := 'X';             -- set_1000
+			eth_tse_0_mac_status_connection_eth_mode    : out std_logic;                                        -- eth_mode
+			eth_tse_0_mac_status_connection_ena_10      : out std_logic;                                        -- ena_10
+			pio_0_external_connection_export            : in  std_logic_vector(7 downto 0)  := (others => 'X'); -- export
+			reset_controller_0_reset_in0_reset          : in  std_logic                     := 'X';             -- reset
+			spi_0_external_MISO                         : in  std_logic                     := 'X';             -- MISO
+			spi_0_external_MOSI                         : out std_logic;                                        -- MOSI
+			spi_0_external_SCLK                         : out std_logic;                                        -- SCLK
+			spi_0_external_SS_n                         : out std_logic                                         -- SS_n
+		);
+	end component ativiade5;
+

@@ -1,0 +1,100 @@
+# Tcl_script1.tcl
+
+# Definir o padrão de I/O para 3.3-V LVTTL (pode ser definido globalmente ou por pino)
+set_global_assignment -name IO_STANDARD "3.3-V LVTTL"
+
+# Clock de 50 MHz (PIN_AF14)
+set_location_assignment PIN_AF14 -to clk_clk
+
+# Reset (KEY0 - PIN_AH17)
+set_location_assignment PIN_AH17 -to reset_controller_0_reset_in0_reset
+
+# PIO (LEDR[0..7])
+set_location_assignment PIN_V16 -to pio_0_external_connection_export[0]
+set_location_assignment PIN_W16 -to pio_0_external_connection_export[1]
+set_location_assignment PIN_V17 -to pio_0_external_connection_export[2]
+set_location_assignment PIN_W17 -to pio_0_external_connection_export[3]
+set_location_assignment PIN_V18 -to pio_0_external_connection_export[4]
+set_location_assignment PIN_W18 -to pio_0_external_connection_export[5]
+set_location_assignment PIN_V19 -to pio_0_external_connection_export[6]
+set_location_assignment PIN_W19 -to pio_0_external_connection_export[7]
+
+# SPI Interface (Arduino Header)
+set_location_assignment PIN_AD4 -to spi_0_external_MISO
+set_location_assignment PIN_AC4 -to spi_0_external_MOSI
+set_location_assignment PIN_AF4 -to spi_0_external_SCLK
+set_location_assignment PIN_AE4 -to spi_0_external_SS_n
+
+# Ethernet TSE (exemplo usando GPIO_0)
+
+# Recepção GMII
+set_location_assignment PIN_AB12 -to eth_tse_0_mac_gmii_connection_gmii_rx_d[0]
+set_location_assignment PIN_AC12 -to eth_tse_0_mac_gmii_connection_gmii_rx_d[1]
+set_location_assignment PIN_AD12 -to eth_tse_0_mac_gmii_connection_gmii_rx_d[2]
+set_location_assignment PIN_AE12 -to eth_tse_0_mac_gmii_connection_gmii_rx_d[3]
+set_location_assignment PIN_AF12 -to eth_tse_0_mac_gmii_connection_gmii_rx_d[4]
+set_location_assignment PIN_AG12 -to eth_tse_0_mac_gmii_connection_gmii_rx_d[5]
+set_location_assignment PIN_AH12 -to eth_tse_0_mac_gmii_connection_gmii_rx_d[6]
+set_location_assignment PIN_AJ12 -to eth_tse_0_mac_gmii_connection_gmii_rx_d[7]
+set_location_assignment PIN_AK12 -to eth_tse_0_mac_gmii_connection_gmii_rx_dv
+set_location_assignment PIN_AL12 -to eth_tse_0_mac_gmii_connection_gmii_rx_err
+
+# Transmissão GMII
+set_location_assignment PIN_AM12 -to eth_tse_0_mac_gmii_connection_gmii_tx_d[0]
+set_location_assignment PIN_AN12 -to eth_tse_0_mac_gmii_connection_gmii_tx_d[1]
+set_location_assignment PIN_AP12 -to eth_tse_0_mac_gmii_connection_gmii_tx_d[2]
+set_location_assignment PIN_AR12 -to eth_tse_0_mac_gmii_connection_gmii_tx_d[3]
+set_location_assignment PIN_AT12 -to eth_tse_0_mac_gmii_connection_gmii_tx_d[4]
+set_location_assignment PIN_AU12 -to eth_tse_0_mac_gmii_connection_gmii_tx_d[5]
+set_location_assignment PIN_AV12 -to eth_tse_0_mac_gmii_connection_gmii_tx_d[6]
+set_location_assignment PIN_AW12 -to eth_tse_0_mac_gmii_connection_gmii_tx_d[7]
+set_location_assignment PIN_AA12 -to eth_tse_0_mac_gmii_connection_gmii_tx_en
+set_location_assignment PIN_AB13 -to eth_tse_0_mac_gmii_connection_gmii_tx_err
+
+# MII (se utilizado)
+set_location_assignment PIN_AC13 -to eth_tse_0_mac_mii_connection_mii_rx_d[0]
+set_location_assignment PIN_AD13 -to eth_tse_0_mac_mii_connection_mii_rx_d[1]
+set_location_assignment PIN_AE13 -to eth_tse_0_mac_mii_connection_mii_rx_d[2]
+set_location_assignment PIN_AF13 -to eth_tse_0_mac_mii_connection_mii_rx_d[3]
+set_location_assignment PIN_AG13 -to eth_tse_0_mac_mii_connection_mii_rx_dv
+set_location_assignment PIN_AH13 -to eth_tse_0_mac_mii_connection_mii_rx_err
+set_location_assignment PIN_AJ13 -to eth_tse_0_mac_mii_connection_mii_tx_d[0]
+set_location_assignment PIN_AK13 -to eth_tse_0_mac_mii_connection_mii_tx_d[1]
+set_location_assignment PIN_AL13 -to eth_tse_0_mac_mii_connection_mii_tx_d[2]
+set_location_assignment PIN_AM13 -to eth_tse_0_mac_mii_connection_mii_tx_d[3]
+set_location_assignment PIN_AN13 -to eth_tse_0_mac_mii_connection_mii_tx_en
+set_location_assignment PIN_AP13 -to eth_tse_0_mac_mii_connection_mii_tx_err
+set_location_assignment PIN_AR13 -to eth_tse_0_mac_mii_connection_mii_crs
+set_location_assignment PIN_AT13 -to eth_tse_0_mac_mii_connection_mii_col
+
+# Definir o padrão de I/O para cada pino (opcional, se já definido globalmente)
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to clk_clk
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to reset_controller_0_reset_in0_reset
+
+# Definir o padrão de I/O para os pinos do PIO (LEDR)
+foreach idx {0 1 2 3 4 5 6 7} {
+    set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to pio_0_external_connection_export[$idx]
+}
+
+# Definir o padrão de I/O para os pinos do SPI
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to spi_0_external_MISO
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to spi_0_external_MOSI
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to spi_0_external_SCLK
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to spi_0_external_SS_n
+
+# Definir o padrão de I/O para os pinos Ethernet
+# Recepção GMII
+foreach idx {0 1 2 3 4 5 6 7} {
+    set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to eth_tse_0_mac_gmii_connection_gmii_rx_d[$idx]
+}
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to eth_tse_0_mac_gmii_connection_gmii_rx_dv
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to eth_tse_0_mac_gmii_connection_gmii_rx_err
+
+# Transmissão GMII
+foreach idx {0 1 2 3 4 5 6 7} {
+    set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to eth_tse_0_mac_gmii_connection_gmii_tx_d[$idx]
+}
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to eth_tse_0_mac_gmii_connection_gmii_tx_en
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to eth_tse_0_mac_gmii_connection_gmii_tx_err
+
+# Fim do arquivo Tcl_script1.tcl
