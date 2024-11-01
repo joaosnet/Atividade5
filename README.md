@@ -62,15 +62,15 @@ The project is under development; future updates will include:
 - [ ] Complete sampling logic.
 - [ ] Integrate and verify hardware connections.
 
-## Contributors
+## 🤝 Contributors
 
 <table>
     <tr>
         <td align="center">
-            <a href="https://github.com/joaosnet">
-                <img src="path/to/avatar.jpg" width="100px;" alt="João"/><br>
+            <a href="https://www.instagram.com/jaonativi/" title="Project Manager Backend Developer">
+                <img src="https://avatars.githubusercontent.com/u/87316339?v=4" width="100px;" alt="João Natividade's Photo on GitHub"/><br>
                 <sub>
-                    <b>João da Cruz de Natividade e Silva Neto</b>
+                    <b>João Natividade</b>
                 </sub>
             </a>
         </td>
