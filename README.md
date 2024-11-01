@@ -5,7 +5,7 @@
 ![Forks](https://img.shields.io/github/forks/joaosnet/Atividade5?style=for-the-badge)
 ![Open Issues](https://img.shields.io/github/issues/joaosnet/Atividade5?style=for-the-badge)
 ![Open Pull Requests](https://img.shields.io/github/issues-pr/joaosnet/Atividade5?style=for-the-badge)
-[![Language](https://img.shields.io/badge/lang-en-green.svg)](https://github.com/joaosnet/Atividade5/blob/master/README.md)
+[![Language: pt-br](https://img.shields.io/badge/lang-pt--br-green.svg?style=for-the-badge)](https://github.com/joaosnet/Atividade5/blob/master/README.md)
 
 ## Project Description
 
