@@ -32,13 +32,13 @@ Este projeto configura a comunicação SPI com um ADC na DE1-SoC, incluindo cont
 
 ## Capturas de Tela
 
-![Capturas de Tela](path/to/screenshots.png)
+![Capturas de Tela](screenshots/screenshots.png)
 
 _Descrição das capturas de tela._
 
 ## Arquitetura
 
-![Diagrama de Arquitetura](path/to/architecture.png)
+![Diagrama de Arquitetura](screenshots/architecture.png)
 
 _Descrição da arquitetura._
 

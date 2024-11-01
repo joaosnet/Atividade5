@@ -32,13 +32,13 @@ This project configures SPI communication with an ADC on the DE1-SoC, involving 
 
 ## Screenshots
 
-![Screenshots](path/to/screenshots.png)
+![Screenshots](screenshots/screenshots.png)
 
 _Description of screenshots._
 
 ## Architecture
 
-![Architecture Diagram](path/to/architecture.png)
+![Architecture Diagram](screenshots/architecture.png)
 
 _Description of the architecture._
 
