@@ -1,0 +1,103 @@
+# Trabalhando com o Altera Quartus II (Q2) e fazer versionamento adequado não é tão fácil
+# mas se você seguir algumas regras, é possível. :)
+# Este arquivo deve ser colocado no diretório principal onde o arquivo .qpf está
+# encontrado. Geralmente o Q2 joga todas as entidades e assim por diante no diretório principal, mas
+# você também pode colocar todas as coisas em pastas separadas. Essa abordagem é seguida
+# aqui. Portanto, quando você cria um novo design, crie uma ou mais pastas onde seu
+# entidades serão localizadas e coloque um .gitignore lá que substitui os
+# ignores deste arquivo, por exemplo, uma única regra afirmando "!*" que agora permite todos
+# tipo de arquivos. Quando você adiciona um MegaFunction ou outra entidade ao seu design,
+# simplesmente adicione-o a uma de suas pastas privadas e o Q2 ficará feliz e gerenciará
+# tudo muito bem. Quando você deseja fazer o versionamento de seus arquivos SOF/POF gerados,
+# você pode fazer isso redirecionando a saída gerada para uma pasta própria. Para fazer isso, vá para:
+# "Assignments"
+# -> "Settings
+# -> "Compilation Process Settings"
+# -> "Save project output files in specified directory"
+# Agora você pode colocar um .gitignore no diretório e permitir a seguinte
+# lista de tipos:
+# !*.sof
+# !*.pof
+# ou você cria um próprio submódulo na pasta para manter os arquivos binários fora do seu
+# design.
+
+# Precisa manter todos os arquivos HDL
+# *.vhd
+# *.v
+
+# Exclusões gerais de arquivos
+~*.tmp
+*~
+~$*
+
+# Ignorar arquivos do Xilinx ISE
+/Xilinx\ ISE/**/*.*
+/Xilinx\ ISE/**/ise
+!/Xilinx\ ISE/**/*.xise
+!/Xilinx\ ISE/**/iseconfig/filter.filter
+
+# Ignorar arquivos do Xilinx Vivado
+/Xilinx\ Vivado/**/*.*
+!/Xilinx\ Vivado/**/*.xpr
+
+# Ignorar arquivos do QuestaSim
+/QuestaSim/*
+/QuestaSim/**/*.*
+!/QuestaSim/*.cmd
+!/QuestaSim/*.log
+
+# Ignorar arquivos do GHDL
+/ghdl/**/*.*
+!/ghdl/*.cmd
+!/ghdl/*.log
+
+# Lista de permissões gerais
+!.publish
+!.git*
+
+*.cf
+JSONTestSuite/config.pkg.vhdl
+
+# Ignorar arquivos gerados pelo Quartus II
+*_generation_script*
+*_inst.vhd
+*.bak
+*.cmp
+*.done
+*.eqn
+*.hex
+*.html
+*.jdi
+*.jpg
+# *.mif
+*.pin
+*.pof
+*.ptf.*
+*.qar
+*.qarlog
+*.qws
+*.rpt
+*.smsg
+*.sof
+*.sopc_builder
+*.summary
+*.tcl
+*.txt # Adicione explicitamente quaisquer arquivos de texto usados
+*~
+*example*
+*sopc_*
+# *.sdc # Eu quero esses arquivos de temporização
+
+# Ignorar pastas geradas pelo Quartus II
+*/db/
+*/incremental_db/
+*/simulation/
+*/timing/
+*/testbench/
+*/*_sim/
+incremental_db/
+db/
+_output_files/
+PLLJ_PLLSPE_INFO.txt
+simulation/
+Exemplo1/
