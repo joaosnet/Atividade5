@@ -36,6 +36,14 @@ This project configures SPI communication with an ADC on the DE1-SoC, involving 
 
 _Description of screenshots._
 
+![Captured samples](screenshots/Amostras capturadas2.png)
+
+_Captured samples._
+
+![qsys](screenshots/qsys.png)
+
+_qsys._
+
 ## Architecture
 
 ![Architecture Diagram](screenshots/architecture.png)
