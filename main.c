@@ -1,116 +1,89 @@
-#include <stdio.h>
-#include <stdint.h>
 #include "system.h"
 #include "alt_types.h"
-#include "altera_avalon_pio_regs.h"
 #include "altera_avalon_spi.h"
-#include "altera_avalon_uart_regs.h"
-#include "sys/alt_irq.h"
-#include "sys/alt_stdio.h"
-#include "sys/alt_alarm.h"
+#include "sys/alt_irq.h"          // Inclui interrupções
+#include "altera_avalon_pio_regs.h"
+#include "altera_avalon_timer_regs.h"
+#include <stdint.h>
+#include <stdio.h>
 
-#define MAX_SAMPLES 1024
-#define SW_BASE PIO_0_BASE
-#define BUTTON_BASE PIO_1_BASE
+#define CLOCK_FREQ 50000000        // Frequência do clock em Hz (50MHz)
+#define SAMPLE_PERIOD_MS 1000      // Período de amostragem em ms
+#define TICKS_PER_SAMPLE (CLOCK_FREQ / 1000 * SAMPLE_PERIOD_MS)
 
-// Estrutura para armazenar amostra e timestamp
-typedef struct {
-    int16_t value;
-    alt_u32 timestamp;
-} sample_t;
+static volatile char flag_amostra;  // Flag de amostragem
+static volatile uint32_t contador_ms = 0;  // Contador para timestamp em ms
 
-// Protótipos
-void init_timer(void);
-void timer_isr(void *context, alt_u32 id);
-int16_t read_adc(void);
-void send_samples(sample_t *samples, int num_samples);
-void wait_for_button_press(void);
+// Função de interrupção do timer
+void timer_isr(void* context, alt_u32 id) {
+    IOWR_ALTERA_AVALON_TIMER_STATUS(TIMER_0_BASE, 0); // Limpa a interrupção
+    flag_amostra = 1;
+    contador_ms += SAMPLE_PERIOD_MS;  // Incrementa o contador em ms
+}
 
-// Variáveis globais
-volatile int timer_flag = 0;
-alt_alarm timer;
-int sample_interval_ms = 1;
-alt_u32 start_time = 0;
+// Função para ler valor do ADC via SPI
+static alt_16 le_adc(void) {
+    static uint8_t cmd[3] = {0x86}, resultado[3];
+    alt_avalon_spi_command(SPI_0_BASE, 0, 3, cmd, 3, resultado, 0);
+    return ((resultado[1] & 0x0F) << 8) | resultado[2];
+}
 
+// Função para aguardar pressionamento do botão com debounce
+static void aguarda_botao(void) {
+    while (IORD_ALTERA_AVALON_PIO_DATA(PIO_1_BASE) & 0x1);
+    for (volatile int i = 0; i < 100000; i++);
+}
+
+// Função principal
 int main(void) {
-    sample_t samples[MAX_SAMPLES];
-    int num_samples = 0;
-    uint32_t switches = 0;
+    printf("Iniciando sistema de aquisição de amostras...\n");
+    fflush(stdout);
 
-    printf("Sistema de Aquisição Iniciado\n");
-    init_uart();
-    init_timer();
+    // Configura o timer para gerar interrupções a cada TICKS_PER_SAMPLE
+    IOWR_ALTERA_AVALON_TIMER_PERIODL(TIMER_0_BASE, TICKS_PER_SAMPLE & 0xFFFF);
+    IOWR_ALTERA_AVALON_TIMER_PERIODH(TIMER_0_BASE, TICKS_PER_SAMPLE >> 16);
+    IOWR_ALTERA_AVALON_TIMER_CONTROL(TIMER_0_BASE, ALTERA_AVALON_TIMER_CONTROL_ITO_MSK | ALTERA_AVALON_TIMER_CONTROL_CONT_MSK | ALTERA_AVALON_TIMER_CONTROL_START_MSK);
+
+    // Registra a interrupção do timer
+    alt_ic_isr_register(TIMER_0_IRQ_INTERRUPT_CONTROLLER_ID, TIMER_0_IRQ, timer_isr, NULL, NULL);
 
     while (1) {
-        // Leitura do número de amostras das chaves
-        switches = IORD_ALTERA_AVALON_PIO_DATA(SW_BASE);
-        num_samples = switches & 0x3FF;
-        if (num_samples == 0 || num_samples > MAX_SAMPLES) {
-            num_samples = MAX_SAMPLES;
+        // Configura o número de amostras com base nos switches
+        uint16_t N = IORD_ALTERA_AVALON_PIO_DATA(PIO_0_BASE) & 0x3FF; // Leitura de SW[0 a 9]
+        if (N == 0) N = 1; // Garante pelo menos 1 amostra se N for zero
+
+        printf("Numero de amostras configurado: %d\n", N);
+        fflush(stdout);
+
+        printf("Aguardando pressionamento do botão para iniciar...\n");
+        fflush(stdout);
+        aguarda_botao();
+
+        // Inicializa o contador de timestamp
+        contador_ms = 0;
+        flag_amostra = 0;
+
+        // Loop de aquisição de amostras
+        for (uint16_t i = 0; i < N; i++) {
+            while (!flag_amostra);     // Espera a flag de amostra ser acionada
+            flag_amostra = 0;
+
+            // Captura o valor do ADC e o timestamp
+            alt_16 valor_adc = le_adc();
+            uint32_t timestamp = contador_ms;
+
+            // Imprime a amostra no formato solicitado
+            printf("%d : %u ms", valor_adc, timestamp);
+            if (i < N - 1) {
+                printf(", ");
+            } else {
+                printf("\n");
+            }
+            fflush(stdout);
         }
 
-        printf("Aguardando botão. Número de amostras: %d\n", num_samples);
-        wait_for_button_press();
-        printf("Iniciando aquisição...\n");
-
-        // Marca o tempo inicial
-        start_time = alt_nticks();
-
-        // Captura das amostras com timestamp
-        for (int i = 0; i < num_samples; i++) {
-            while (!timer_flag); // Aguarda o próximo período
-            timer_flag = 0;
-            
-            samples[i].value = read_adc();
-            samples[i].timestamp = alt_nticks() - start_time;
-        }
-
-        printf("Enviando dados...\n");
-        send_samples(samples, num_samples);
-        printf("Aquisição completa\n\n");
+        printf("Aquisicao concluida!\n");
+        fflush(stdout);
     }
-
     return 0;
-}
-
-void init_timer(void) {
-    alt_alarm_start(&timer, sample_interval_ms, timer_isr, NULL);
-}
-
-alt_u32 timer_isr(void *context) {
-    timer_flag = 1;
-    return sample_interval_ms;
-}
-
-int16_t read_adc(void) {
-    uint8_t tx_buffer[3] = {0};
-    uint8_t rx_buffer[3] = {0};
-    
-    // Configuração específica para o ADC LTC2308
-    tx_buffer[0] = 0x86;  // Single-ended, canal 0
-    
-    // Realiza a transação SPI
-    alt_avalon_spi_command(SPI_0_BASE, 0, 3, tx_buffer, 3, rx_buffer, 0);
-    
-    // Processa os dados (12 bits)
-    uint16_t adc_value = ((rx_buffer[1] & 0x0F) << 8) | rx_buffer[2];
-    
-    return (int16_t)adc_value;
-}
-
-void send_samples(sample_t *samples, int num_samples) {
-    for (int i = 0; i < num_samples; i++) {
-        printf("%d,%lu", samples[i].value, samples[i].timestamp);
-        if (i < num_samples - 1) {
-            printf(";");
-        }
-    }
-    printf("\n");
-}
-
-void wait_for_button_press(void) {
-    while ((IORD_ALTERA_AVALON_PIO_DATA(BUTTON_BASE) & 0x01) != 0);
-    alt_u32 debounce_delay = alt_ticks_per_second() / 10; // 100ms debounce
-    alt_u32 press_time = alt_nticks();
-    while (alt_nticks() - press_time < debounce_delay);
 }

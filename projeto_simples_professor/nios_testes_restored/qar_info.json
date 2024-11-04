@@ -1,0 +1,7 @@
+{
+	"common_dir" : "C:/Users/ilanc/Projetos/Altera/nios_testes_onchipram/nios_testes/",
+	"acds_version" : "Version 17.0.0",
+	"platform" : "windows",
+	"os" : "Windows 10",
+	"qpf" : "nios_testes.qpf"
+}
